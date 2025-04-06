@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 //import android.support.v7.widget.ShareActionProvider;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
@@ -37,11 +39,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageView add = findViewById(R.id.add);
+        ImageView back = findViewById(R.id.back);
         name = findViewById(R.id.name);
         race = findViewById(R.id.race);
         weight = findViewById(R.id.weight);
         age = findViewById(R.id.age);
 
+        Toolbar toolbar = findViewById(R.id.toolbar); // Asegúrate de que este id coincide con el definido en tu toolbar_main.xml
+        setSupportActionBar(toolbar);
+
+        back.setVisibility(View.GONE);
         //add.setVisibility(View.GONE);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,16 +80,8 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
-        //MenuItem item = menu.findItem(R.id.action_share);
-        //shareActionProvider = new ShareActionProvider(this);
-        //item.setActionProvider(shareActionProvider);
-        //shareActionProvider = (ShareActionProvider) item.getActionProvider();
-        //MenuItem menuItem = menu.findItem(R.id.action_share);
-        //shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        setShareActionIntent("Want to join to register yout pet?");
+        setShareActionIntent("Want to join to HappyPaws?");
         return super.onCreateOptionsMenu(menu);
-        //return true;
     }
 
     private void setShareActionIntent(String text) {
@@ -94,15 +93,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-        if (id == R.id.action_create_order) {
-            Intent intent = new Intent(this, OrderActivity.class);
-            startActivity(intent);
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-    }
 }
