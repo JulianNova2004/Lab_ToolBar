@@ -7,4 +7,24 @@
         <item name="colorAccent">#FF4081</item>
 
     </style>
+
+    <style name="FormEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">@android:drawable/editbox_background</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="InfoText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>

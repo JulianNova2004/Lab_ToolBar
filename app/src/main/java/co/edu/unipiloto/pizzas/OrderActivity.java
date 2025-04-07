@@ -45,9 +45,9 @@ public class OrderActivity extends AppCompatActivity {
 
         String n = preferences.getString("name","");
         Toast.makeText(this,n,Toast.LENGTH_SHORT).show();
-        name.setText("nombre : " + preferences.getString("name",""));
-        race.setText("raza : " +preferences.getString("race",""));
-        weight.setText("weight : " + preferences.getString("weight",""));
-        age.setText("age : " + preferences.getString("age",""));
+        name.setText("Nombre : " + preferences.getString("name",""));
+        race.setText("Raza : " +preferences.getString("race",""));
+        weight.setText("Weight : " + preferences.getString("weight",""));
+        age.setText("Age : " + preferences.getString("age",""));
     }
 }

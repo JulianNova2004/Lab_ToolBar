@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private ShareActionProvider shareActionProvider;
 
     private EditText name,race,weight,age;
+    private ImageView addT, backT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,35 +39,45 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        ImageView add = findViewById(R.id.add);
-        ImageView back = findViewById(R.id.back);
+        addT = findViewById(R.id.add);
+        ImageView backT = findViewById(R.id.back);
         name = findViewById(R.id.name);
         race = findViewById(R.id.race);
         weight = findViewById(R.id.weight);
         age = findViewById(R.id.age);
+        addT = findViewById(R.id.add);
 
-        Toolbar toolbar = findViewById(R.id.toolbar); // Asegúrate de que este id coincide con el definido en tu toolbar_main.xml
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        back.setVisibility(View.GONE);
-        //add.setVisibility(View.GONE);
-        add.setOnClickListener(new View.OnClickListener() {
+        backT.setVisibility(View.GONE);
+        //addT.setVisibility(View.GONE);
+        addT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, OrderActivity.class);
                 startActivity(intent);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                name.setText("");
+                race.setText("");
+                weight.setText("");
+                age.setText("");
             }
         });
     }
 
-    public void sub(View view) {
+    public void submit(View view) {
         String nameStr = name.getText().toString();
         String raceStr = race.getText().toString();
         String weightStr = weight.getText().toString();
         String ageStr = age.getText().toString();
         sharedPreferences = getSharedPreferences("petin", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        Toast.makeText(this,nameStr,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,nameStr,Toast.LENGTH_SHORT).show();
         editor.putString("name", nameStr);
         editor.putString("race", raceStr);
         editor.putString("weight", weightStr);
